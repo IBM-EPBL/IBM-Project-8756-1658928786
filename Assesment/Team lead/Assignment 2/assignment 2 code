@@ -1,0 +1,23 @@
+import random
+from time import*
+ideal=True
+while(ideal):
+    Temp=random.randint(0,100)
+    Humi=random.randint(10,50)
+    if Temp>40 and Humi<30:
+        print("Temperature=",Temp,"Humidity=",Humi)
+        print("         Alarm ON         ")
+        ideal=False
+    else:
+        print("Temperature=",Temp,"Humidity",Humi)
+        sleep(1);
+---------------------------------------------------------------------------------------------------
+
+OUTPUT:
+
+Temperature= 77 Humidity 40
+Temperature= 52 Humidity 37
+Temperature= 19 Humidity 16
+Temperature= 76 Humidity 38
+Temperature= 62 Humidity= 28
+         Alarm ON         
