@@ -1,77 +1,46 @@
-Write a Python code for blinking LED and traffic lights for Rasberry PI
+Write python code for blinking LED and Traffic lights for Raspberry pi 
+Only python code is enough,no need to execute in raspberry pi).
+
+Solution:-
 
 
-#traffic light for raspberry pi simulating in pycham with GUI I
+Python Code for Blinking LED:
 
-import turtle
+Import RPi.GPIO as GPIO
 import time
-wn= turtle.getscreen()
-wn.title("Traffic Light By Mohammed Hasan")
-wn.bgcolor("black")
-
-
-#gui interfrace
-
-pen= turtle.Turtle() 
-pen.color("Yellow")
-pen.width(4)
-pen.hideturtle()
-pen.penup()
-pen.goto(-30, 60)
-pen.pendown()
-pen.fd(60)
-pen.rt(90)
-pen.fd(120)
-pen.rt(90)
-pen.fd(60)
-pen.rt(90)
-pen.fd(120)
-
-
-#red light
-
-red_light=turtle.Turtle()
-red_light.shape("circle")
-red_light.color("grey")
-red light.penup()
-red_light.goto(0, 40)
-
-
-#Yellow light
-yellow_light =turtle. Turtle()
-yellow_light.shape("circle")
-yellow_light.color("grey")
-yellow_light.penup()
-yellow_light.goto(0, 0)
-
-
-#Green light
-
-green_light =turtle.Turtle()
-green_light.shape("circle")
-green_light.color("grey")
-green light.penup()
-green_light.goto(0, -40)
-
-
+#assign numbering for the GPIO using BCM
+GPIO.setmode(GPIO.BCM)
+#assign number for the GPIO using Board
+#GPIO.setmode(GPIO.BOARD)
+cnt = 0
+MAIL_CHECK_FREQ = 1 # change LED status every 1 seconds
+RED_LED = 4
+GPIO.setup(RED_LED, GPIO.OUT)
 while True:
+ifcnt == 0 :
+GPIO.output(RED_LED, False)
+cnt = 1
+else:
+GPIO.output(RED_LED, True)
+cnt = 0
+time.sleep(MAIL_CHECK_FREQ)
+GPIO.cleanup()
 
-yellow_light.color("grey")
-red_light.color("red")
-print("Red Signal-Vehicles Must Stop")
-print("Blink!!") 
-time.sleep(2)
-print("Blink!!")
-red_light.color("grey")
-green_light.color("green")
-print("Green Signal-Vehicles Are Allowed To GO")
-print("Blink!!")
-time.sleep(3)
-print("Blink!!")
-green_light.color("grey")
-yellow_light.color("yellow") 
-print("Yellow Signal- Vehicle Must Be Ready")
-print("Blink!!")
-time.sleep(1)
-print("Blink!!")
-wn.mainloop)
+
+Python code for Traffic Lights:
+from gpiozero import Button, TrafficLights, Buzzer
+from time import sleep
+buzzer = Buzzer(15)
+button = Button(21)
+lights = TrafficLights(25, 8, 7)
+while True:
+button.wait_for_press()
+buzzer.on()
+light.green.on()
+sleep(1)
+lights.amber.on()
+sleep(1)
+lights.red.on()
+sleep(1)
+lights.off()
+buzzer.off()
